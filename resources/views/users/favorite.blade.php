@@ -14,14 +14,12 @@
                     <p class="mb-0">{!! nl2br(e($favorite->content)) !!}</p>
                 </div>
                 {{-- お気に入り解除 --}}
-                @if (Auth::id() != $favorite->id)
                     @if (Auth::user()->is_favorites($favorite->id))
                         {{-- お気に入り解除のフォーム --}}
                         {!! Form::open(['route' => ['favorites.unfavorite', $favorite->id], 'method' => 'delete']) !!}
                         {!! Form::submit('Unfavorite', ['class' => "btn btn-danger btn-block"]) !!}
                         {!! Form::close() !!}
                     @endif
-                @endif
                 
         </li>
         
